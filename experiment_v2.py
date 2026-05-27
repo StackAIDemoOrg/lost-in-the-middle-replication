@@ -20,6 +20,7 @@ import math
 import sys
 from collections import defaultdict
 from typing import Dict, List, Tuple
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from openai import OpenAI, RateLimitError
@@ -769,11 +770,8 @@ def main():
     print(f"Total trials: {total_trials}")
     print(f"\nEstimated cost: ${estimated_total_cost:.2f}")
     print("=" * 80)
-
-    response = input("\nProceed with experiment? (yes/no): ")
-    if response.lower() not in ['yes', 'y']:
-        print("Experiment cancelled.")
-        sys.exit(0)
+    print("\nProceeding with experiment automatically...")
+    print("=" * 80)
 
     # Run experiment
     results = run_experiment(CONTEXT_LENGTHS_K, POSITIONS, TRIALS_PER_CELL)
@@ -796,6 +794,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # Import numpy for plotting (needed for linspace)
-    import numpy as np
     main()
